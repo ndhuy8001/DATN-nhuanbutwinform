@@ -61,6 +61,11 @@ namespace HETHONGTINHNHUANBUT
             OpenChildForm(new FrmTacGia());
         }
 
+        private void btnButDanh_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmButDanh());
+        }
+
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FrmTaiKhoan());
@@ -79,6 +84,17 @@ namespace HETHONGTINHNHUANBUT
             FrmPhieuChi frmChi = new FrmPhieuChi();
             frmChi.NguoiLapPhieu = this.currentUserName;
             OpenChildForm(frmChi);
+        }
+
+        // ==========================================
+        // MỚI THÊM: SỰ KIỆN NÚT LÃNH ĐẠO DUYỆT CHI
+        // ==========================================
+        private void btnDuyetChi_Click(object sender, EventArgs e)
+        {
+            FrmDuyetPhieuChi frmDuyet = new FrmDuyetPhieuChi();
+            // Truyền tên tài khoản đang đăng nhập vào làm người duyệt (nếu trống thì để mặc định)
+            frmDuyet.NguoiDuyet = string.IsNullOrEmpty(this.currentUserName) ? "Ban Giám Đốc" : this.currentUserName;
+            OpenChildForm(frmDuyet);
         }
 
         // --- NHÓM MENU BÁO CÁO ---
@@ -102,7 +118,7 @@ namespace HETHONGTINHNHUANBUT
         // --- ĐĂNG XUẤT ---
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Đồng chí có chắc chắn muốn đăng xuất khỏi hệ thống?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Hide();
                 FormLogin login = new FormLogin();
